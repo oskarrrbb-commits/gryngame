@@ -853,11 +853,13 @@
 
         if(bird->active)   
         {
+            
             if(SDL_HasIntersection(&bird->pos, &cat->pos)) return true;
         }  
         if(frog->active) 
         {
-            if(SDL_HasIntersection(&frog->pos, &cat->pos)) return true;
+            frog_rect={frog->x+LEG_HITBOX_X,frog->y,frog->w-LEG_HITBOX_X,frog->h};
+         if(SDL_HasIntersection(&frog_rect, &cat->pos)) return true;
         }
 
         if((map->maptab[map->activeroom][((cat->y+cat->h-10)/100)][(cat->x+LEG_HITBOX_X)/100]==3 || map->maptab[map->activeroom][((cat->y+cat->h-10)/100)][((cat->x-LEG_HITBOX_X)+cat->w)/100]==3))
